@@ -1,0 +1,94 @@
+﻿@using System.Security.Claims;
+@using Microsoft.AspNetCore.Identity;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Share/_LayoutAdmin.cshtml";
+}
+
+@{
+    var claims = (ClaimsIdentity)User.Identity;
+    var fullname = claims.FindFirst(ClaimTypes.Name)?.Value ?? "Admin";
+}
+
+<div class="admin-dashboard">
+    <!-- Phần chào mừng -->
+    <div class="welcome-section">
+        <h1>👋 Xin chào, <span>@fullname</span></h1>
+        <p>Chào mừng bạn đến với trang quản trị! Hãy khám phá các chức năng qua menu bên trái.</p>
+    </div>
+
+    <!-- Phần hình ảnh minh họa -->
+   @*  <div class="image-section">
+        <img src="https://via.placeholder.com/700x350.png?text=Welcome+to+Admin+Dashboard" alt="Welcome Admin">
+    </div> *@
+
+    <!-- Phần thông báo -->
+    <div class="info-box">
+        <h3>📌 Thông báo quan trọng</h3>
+        <p>Nếu bạn gặp bất kỳ sự cố nào trong quá trình làm việc, vui lòng liên hệ bộ phận kỹ thuật để được hỗ trợ kịp thời.</p>
+    </div>
+</div>
+
+<!-- CSS Tùy chỉnh -->
+<style>
+    /* Tổng thể trang */
+    .admin-dashboard {
+        padding: 40px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        background-color: #f4f7fc;
+    }
+
+    /* Phần chào mừng */
+    .welcome-section {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        padding: 50px;
+        border-radius: 15px;
+        color: #fff;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+        .welcome-section h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .welcome-section span {
+            font-weight: bold;
+            color: #ffde59;
+        }
+
+    /* Phần hình ảnh */
+    .image-section {
+        margin: 40px 0;
+    }
+
+        .image-section img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+    /* Phần thông báo */
+    .info-box {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .info-box h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            font-size: 14px;
+            color: #666;
+        }
+</style>
